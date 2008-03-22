@@ -82,7 +82,11 @@ module Resourceful
     # The available actions are defined in Default::Actions.
     def actions(*available_actions)
       if available_actions.first == :all
-        available_actions = controller.new.plural? ? ACTIONS : SINGULAR_ACTIONS
+        if controller.respond_to?(:new_without_capture)
+          available_actions = controller.new_without_capture.plural? ? ACTIONS : SINGULAR_ACTIONS
+        else
+          available_actions = controller.new.plural? ? ACTIONS : SINGULAR_ACTIONS
+        end
       end
 
       available_actions.each { |action| @ok_actions << action.to_sym }
