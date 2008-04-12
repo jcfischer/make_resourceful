@@ -4,6 +4,8 @@ module Resourceful
       # Sets the default flash message.
       # This message can be overridden by passing in
       # an HTTP parameter of the form "_flash[type]" via POST or GET.
+      # _flash HTTP parameter values will be HTML escaped prior to 
+      # being used.
       #
       # You can use this to easily have multiple forms
       # post to the same create/edit/destroy actions
@@ -17,7 +19,9 @@ module Resourceful
       # TODO: Move this out of here
       #++
       def set_default_flash(type, message)
-        flash[type] ||= (params[:_flash] && params[:_flash][type]) || message
+        flash[type] ||= (params[:_flash] && params[:_flash][type]) ? 
+          ERB::Util.h(params[:_flash][type]) : 
+          message
       end
 
       # Sets the default redirect

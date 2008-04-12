@@ -14,6 +14,13 @@ describe 'Resourceful::Default::Responses', " with a _flash parameter for :error
     @controller.set_default_flash(:error, "Aw there's no error!")
     @flash[:error].should == 'Oh no, an error!'
   end
+  
+  it "should set the flash for :error to the parameter's cleansed value when set_default_flash is called on :error" do
+    evil_script = "<script language=\"javascript\">alert('no good');</script>"
+    @params[:_flash][:error] = evil_script
+    @controller.set_default_flash(:error, "Aw there's no error!")
+    @flash[:error].should == ERB::Util.h(evil_script)
+  end
 
   it "should set the flash for :message to the default value when set_default_flash is called on :message" do
     @controller.set_default_flash(:message, "All jim dandy!")
