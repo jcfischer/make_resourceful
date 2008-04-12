@@ -211,7 +211,7 @@ Don't despair, there are still more resources available!
 * Nathan Weizenbaum periodically makes blog posts about new features and versions of make_resourceful.
   They may be a little outdated, but they should still be useful and explanatory.
   * On nesting and associations: here[http://nex-3.com/posts/55-nesting-and-make_resourceful].
-  * An overview of make_resourceful 0.2.0 and 0.2.2: here[http://localhost:3000/posts/54-make_resourceful-0-2-0].
+  * An overview of make_resourceful 0.2.0 and 0.2.2: here[http://nex-3.com/posts/54-make_resourceful-0-2-0].
   * On Resourceful::Builder#publish[link:classes/Resourceful/Builder.html#M000061]
     and Resourceful::Serialize:
     here[http://nex-3.com/posts/35-make_resourceful-the-basics-of-publish] and
